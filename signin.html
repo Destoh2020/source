@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/loginstyle.css">
-        <link rel="stylesheet" href="css/fontawesome/css/all.css">
-    </head>
-    <body>
-        <main>
-            <div class="background">
-                <div class="text">
-                    <h1>Login</h1>
-                    <p>No account? <a href="signup.html">Sign Up</a></p>
-                </div>
-                <div class="box">
-                    <form class="form-box" method="POST">
-                        <i class="fas fa-user"><input type="text" id="a" class="username" placeholder="Username" required></i>
-                        <i class="fas fa-envelope"><input type="email" id="b" class="email" placeholder="Someone@gmail.com" required></i>
-                        <i class="fas fa-key"><input type="password" id="c" class="password" placeholder="Password" required></i>
-                        <button type="button" onclick="submitForm()">Login</button>
-                    </form>
-                </div>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/loginstyle.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+</head>
+
+<body>
+    <main>
+        <div class="background">
+            <div class="text">
+                <h1>Login</h1>
+                <p>No account? <a href="signup.html">Sign Up</a></p>
             </div>
-        </main>
-        <script>
-            function submitForm(){
-                event.preventDefault();
-                
-                var user = document.getElementById('a').value;
-                var email = document.getElementById('b').value;
-                var password = document.getElementById('c').value;
-
-                if(!user || user ==""){
-                    alert('Please enter your Username');
-                }
-                if(!email || email ==""){
-                    alert('Please enter your email address');
-                }
-                if(!password || password ==""){
-                    alert('Please enter your password');
-                }
-                else{
-                    windows.alert('You have successfully logged In!');
-                }
-
-                windows.location.href='cond.html'
+            <div class="box">
+                <form class="form-box" method="POST">
+                    <i class="fas fa-user"><input type="text" id="a" class="username" placeholder="Username"
+                            required></i>
+                    <i class="fas fa-envelope"><input type="email" id="b" class="email" placeholder="Someone@gmail.com"
+                            required></i>
+                    <i class="fas fa-key"><input type="password" id="c" class="password" placeholder="Password"
+                            required></i>
+                    <button type="button" onclick="submitForm()">Login</button>
+                </form>
+            </div>
+        </div>
+    </main>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function submitForm() {
+            event.preventDefault();
+
+            var user = document.getElementById('a').value;
+            var email = document.getElementById('b').value;
+            var password = document.getElementById('c').value;
+
+            if (!user || user == "") {
+                alert('Please enter your Username');
             }
-        </script>
-    </body>
+            if (!email || email == "") {
+                alert('Please enter your email address');
+            }
+            if (!password || password == "") {
+                alert('Please enter your password');
+            }
+
+            axios.get(`http://localhost:5000/login?username=${user}&password=${password}`)
+                .then((response) => {
+                    console.log(response.data)
+                })
+        }
+    </script>
+</body>
+
 </html>

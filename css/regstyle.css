@@ -6,7 +6,7 @@
 }
 body{
     font-family:'Times New Roman', Times, serif;
-    background: url(images/keith.jpg);
+    background: url(images/latemoon.jpeg);
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -42,7 +42,7 @@ body{
 }
 .form-box{
     background: transparent;
-    color: mediumblue;
+    color: whitesmoke;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -65,7 +65,7 @@ input{
     font-size: 15px;
 }
 :placeholder-shown{
-    color: mediumblue;
+    color: whitesmoke;
 }
 .button{
     background: transparent;

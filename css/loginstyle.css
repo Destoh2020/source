@@ -6,7 +6,7 @@
 }
 body{
     font-family:'Times New Roman', Times, serif;
-    background:url(images/nasa.jpg);
+    background:url(images/log.jpg);
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -78,4 +78,7 @@ button{
 button:hover{
     background: white;
     color: black;
+}
+checkbox{
+    text-align: left;
 }

@@ -7,8 +7,8 @@ import datetime
 app = Flask(__name__)
 
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'CGVVEwrHh8at9EouLkXb'
-app.config['MYSQL_DB'] = 'sms'
+app.config['MYSQL_PASSWORD'] = 'qwerty'
+app.config['MYSQL_DB'] = 'projects'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)

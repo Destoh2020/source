@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import React, { SyntheticEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
@@ -32,19 +32,38 @@ function Login(props: any) {
       return;
     }
 
-    const url = `${baseUrl}/login?username=${username}&password=${password}`;
-    axios.get(url).then((response) => {
-      const data: ApiResponse = response.data;
-      if (!data.status) {
-        Swal.fire({
-          icon: 'error',
-          text: data.message,
-        });
-        return;
-      }
-      const userId = data.user ? data.user.id : '';
-      dispatch(setUserId(userId));
-      props.history.push('/');
+    Swal.fire({
+      html: 'Please wait...',
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+        const url = `${baseUrl}/login?username=${username}&password=${password}`;
+        axios
+          .get(url)
+          .then((response) => {
+            const data: ApiResponse = response.data;
+            if (!data.status) {
+              Swal.fire({
+                icon: 'error',
+                title: 'Login failed!',
+                text: data.message,
+              });
+              return;
+            }
+            const userId = data.user ? data.user.id : '';
+            dispatch(setUserId(userId));
+            Swal.close();
+            props.history.push('/');
+          })
+          .catch((ex: AxiosError) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Login failed!',
+              text: ex.message,
+            });
+          });
+      },
     });
   };
 

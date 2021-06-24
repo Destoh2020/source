@@ -1,11 +1,58 @@
 *{
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    box-sizing: border-box;
     
 }
-.background{
-    background:url(images/beauty.jpeg);
+body{
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.col-3, .col-6, .col-2{
+    box-sizing: border-box;
+    margin-left: 1px;
+    border: 2px solid red;
+    
+}
 
+#new{
+    font-size: 7px;
+    
+    
+}
+.serialno{ 
+    border: 2px solid black;
+    box-sizing: border-box;
+    width: 90%;
+    font-size: 10px;
+    padding-left: 3px;
+    font-weight: 600;
+}
+#logo{
+    text-align: center;
+    font-size: 15px;
+    line-height: 15px;
+}
+.passport{
+    border: 2px solid black;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 11px;
+    padding: 1px;
+    color: rosybrown;
+    opacity: 0.5;
+    
+}
+.retain{
+    font-size: 10px;
+    width: 50%;
+}
+.fab fa-twitter, .fab fa-facebook{
+    color: powderblue;
+
+}
+fieldset{
+    font-size: 8px;
+    border: 2px solid black;
+    box-sizing: border-box;
 }

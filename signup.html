@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
         <link rel="stylesheet" href="css/regstyle.css">
         <link rel="stylesheet" href="css/fontawesome/css/all.css">
     </head>
@@ -14,80 +14,52 @@
                 </div>
                 <div class="box">
                     <form method="POST" class="form-box">
-                        <input type="text" id="full-names" name="full-names" placeholder="Full Name" value="">
-                        <input type="text" id="user-name" name="uname" placeholder="Username" value="">
-                        <input type="password" id="psw" name="psw" placeholder="Password" value="">
-                        <input type="password" id="cpsw" name="confirm-password" placeholder=" Confirm Password" value="">
-                        <input type="email" id="email"  name="email" placeholder="Email" value="">
-                        <input type="email" id="cemail" name="confirm-email" placeholder="Confirm Email" value="">
-                        <input type="submit" class="button" value="Register" onclick="submitForm()">
+                        <input type="text" id="firstName" name="fistName" placeholder="First Name" value="" required>
+                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="" required>
+                        <input type="text" id="username" name="uname" placeholder="Username" value="" required>
+                        <input type="password" id="psw" name="psw" placeholder="Password" value="" required>
+                        <!--<input type="password" id="cpsw" name="confirm-password" placeholder=" Confirm Password" value="">-->
+                        <br>
+                        <br>
+                        <button type="button" onclick="submitForm()">Register</button>
+                        <p id="demo"></p>
                     </form>
                 </div>
             </div>
         </main>
+    
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
-            function submitForm(){
-                event.preventDefault();
+            function submitForm() {
+                console.log("here")
 
-                const fullName = document.getElementById('full-names').value;
-                const user = document.getElementById('user-name').value;
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const username = document.getElementById('username').value;
                 const password = document.getElementById('psw').value;
-                const confirmpassword = document.getElementById('cpsw').value;
-                const email = document.getElementById('email').value;
-                const confirmemail = document.getElementById('cemail').value;
-                const passw = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%^&\*])^/;
-                const filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$^/;
 
-                if(!fullName || fullName ===""){
-                    alert('Please enter your full names');
-                    return;
+                const user = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    username: username,
+                    password: password
                 }
-                if(!user || user ===""){
-                    alert('Please enter your username');
-                    return;
-                }
-                if(!password || password ===""){
-                    alert('Please enter your password');
-                    return;
-                }
-                if(!passw || !passw.test(password)){
-                    alert('Password must contain atleast:one uppercase, one lowercase, a numerical and a special character');
-                    return false;
-                }
-                if(!password || password.length <8){
-                    alert('Password must be at least 8 characters long.')
-                    return false;
-                }
-                if(!confirmpassword || confirmpassword ===""){
-                    alert('Please confirm your password');
-                    return;
-                }
-                if(password != confirmpassword){
-                    alert('Password do not match');
-                    return false;   
-                }
-                if(!email || email ===""){
-                    alert('Please enter your email address');
-                    return;
-                }
-                if(!confirmemail || confirmemail ===""){
-                    alert('Please Confirm your email address');
-                    return;
-                }
-                if(email != confirmemail){
-                    alert('Email do not match');
-                    return false;   
-                }
-                else{
-                    alert('You have successfully created and acoount.')
-                }
+
+                axios.post(`http://localhost:5000/signup`, user)
+                    .then((response) => {
+                        console.log(response.data)
+                    
+
+                    const arr = response.data
+                    const message = arr[1]
+                       alert; message
+                })
                 
-                
-                
-        
-                window.location.href = 'signin.html'
+
             }
-           
+
+
         </script>
+     
     </body>
 </html>

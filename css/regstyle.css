@@ -67,7 +67,7 @@ input{
 :placeholder-shown{
     color: whitesmoke;
 }
-.button{
+button{
     background: transparent;
     border: 1px solid white;
     color: white;
@@ -76,7 +76,7 @@ input{
     margin-left: 5px;
     border-radius: 30px;
 }
-.button:hover{
+button:hover{
     background: purple;
     color: black;
     opacity: 0.5;

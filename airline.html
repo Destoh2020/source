@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oklahoma Airline</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/airline.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+</head>
+<body>
+    <nav>
+        <label class="logo" >OklAirline <span><img src="imagesall/jeep.jpeg" alt="" height="20px" width="50px" style="align-items: center;"></span></label>
+        <br>
+        <ul>
+            <li><a class="active" href="airline.html" >Home</a></li>
+            <li><a href="airline.html#aboutus">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Our Team</a></li>
+        </ul>
+        <label id="icon"><i class="fas fa-bars"></i></label>
+        <div class="btn">
+            <ul>
+                <li><a href="signin.html" target="_blank">Log In</a></li>
+                <li><a href="signup.html" target="_blank">Register</a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <section>
+        <div><h2 id="home"></h2>
+            <h1 style="color: white;">Welcome to our site</h1>
+        </h2>
+        </div>
+        <div class="w3" style="color: white;">
+            <h2 id="aboutus">About Us</h2>
+            
+        </div>
+        
+
+    </section>
+
+
+
+
+
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('label').click(function(){
+            $('#icon').show();
+
+        });
+
+    });
+</script>
+</body>
+</html>

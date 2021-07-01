@@ -56,3 +56,14 @@ fieldset{
     border: 2px solid black;
     box-sizing: border-box;
 }
+.row{
+    height: 50%;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+.row1{
+    height: 50%;
+    border: 2px solid black;
+    box-sizing: border-box;
+    position: relative;
+}

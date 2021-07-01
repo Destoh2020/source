@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" >
         <link rel="stylesheet" href="css/regstyle.css">
         <link rel="stylesheet" href="css/fontawesome/css/all.css">
@@ -24,6 +25,7 @@
                         <button type="button" onclick="submitForm()">Register</button>
                         <p id="demo"></p>
                     </form>
+                    
                 </div>
             </div>
         </main>
@@ -31,7 +33,7 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
             function submitForm() {
-                console.log("here")
+                event.preventDefault();
 
                 const firstName = document.getElementById('firstName').value;
                 const lastName = document.getElementById('lastName').value;
@@ -47,18 +49,18 @@
 
                 axios.post(`http://localhost:5000/signup`, user)
                     .then((response) => {
-                        console.log(response.data)
+                       console.log(response.data)
+                       
                     
+                });
+                
+    
 
-                    const arr = response.data
-                    const message = arr[1]
-                       alert; message
-                })
                 
 
             }
-
-
+        
+        
         </script>
      
     </body>

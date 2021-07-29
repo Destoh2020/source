@@ -1,6 +1,8 @@
 from flask import Flask
-from flask import request
+from flask import request, jsonify
 from flask_mysqldb import MySQL
+import string
+import random
 
 app = Flask(__name__)
 
@@ -59,6 +61,42 @@ def sign_up():
         return jsonify(response_message)
     except Exception as e:
         response_message = [False, f'An error occurred while adding user: {e}']
+        return jsonify(response_message)
+
+
+@app.route('/forgotPassword')
+def forgot_password():
+    username = request.args.get('username', None)
+
+    if username is None:
+        response_message = [False, 'Username was not provided']
+        return jsonify(response_message)
+
+    # check that the username exists in the DB
+    query = 'SELECT ID, FirstName, LastName from users WHERE Username=%s'
+    cur = mysql.connection.cursor()
+    cur.execute(query, (username,))
+    user = cur.fetchone()
+
+    # if the username exists, send an email to the user with the reset link
+    # we dont have an email address at the moment so we will just pretend we are sending the link
+    # Also change the password so that no one ca login with the old password once reset password has been triggered
+    if user is not None and len(user) > 0:
+        letters = string.ascii_letters
+        temp_password = ''.join(random.choice(letters) for i in range(6))
+        update_query = f"UPDATE users SET Password='{temp_password}', PasswordReset=1 WHERE Username='{username}'"
+        print(update_query)
+
+        cur.execute(update_query)
+        mysql.connection.commit()
+
+        # send the email with reset link here
+        link = f"http://localhost:5000/resetPassword?username={username}"
+
+        response_message = [True, 'You have successfully reset your password. an email has been sent with link', link]
+        return jsonify(response_message)
+    else:
+        response_message = [False, 'No user was found with that username']
         return jsonify(response_message)
 
 

@@ -100,5 +100,51 @@ def forgot_password():
         return jsonify(response_message)
 
 
+@app.route('/resetPassword')
+def reset_password():
+    username = request.args.get('username', None)
+    temp_password = request.args.get('oldPassword', None)
+    new_password = request.args.get('newPassword', None)
+
+    if username is None:
+        response_message = [False, 'Username was not provided']
+        return jsonify(response_message)
+
+    if temp_password is None:
+        response_message = [False, 'Old password was not provided']
+        return jsonify(response_message)
+
+    if new_password is None:
+        response_message = [False, 'New password was not provided']
+        return jsonify(response_message)
+
+    # check that the username exists in the DB
+    query = 'SELECT ID, FirstName, LastName, Password, PasswordReset from users WHERE Username=%s'
+    cur = mysql.connection.cursor()
+    cur.execute(query, (username,))
+    user = cur.fetchone()
+
+    # check if user has PasswordReset enabled
+    print(user['PasswordReset'])
+    if user['PasswordReset'] != 1:
+        response_message = [False, 'User has not requested password reset']
+        return jsonify(response_message)
+
+    # check if the password given as old password is same to he temporary password that was generated
+    if user['Password'] != temp_password:
+        response_message = [False, 'The current password provided does not match']
+        return jsonify(response_message)
+
+    # update the user with the new password and disable PasswordReset field
+    update_query = f"UPDATE users SET Password='{new_password}', PasswordReset=0 WHERE Username='{username}'"
+    print(update_query)
+
+    cur.execute(update_query)
+    mysql.connection.commit()
+
+    response_message = [True, 'You have successfully changed your password']
+    return jsonify(response_message)
+
+
 if __name__ == '__main__':
     app.run()

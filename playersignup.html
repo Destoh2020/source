@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Sign up Form</title>
+    <link rel="stylesheet" href="css/playersignup.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+        <form method="POST">
+            <h2>Register</h2>
+            <p>Fill the form below to register. </p>
+            <hr>
+            <label for="First Name">First Name:</label>
+            <div class="input-txt">
+                <input type="text" class="first" id="firstname" name="firstname" placeholder="First Name" value="" required>
+            </div>
+            <label for="middlename">Middle Name:</label>
+            <div class="input-txt">
+                <input type="text" class="middlen" id="middlename" name="middlename" placeholder="Middle Name" value="" required>
+            </div>
+            <label for="lastname">Last Name:</label>
+            <div class="input-txt">
+                <input type="text" class="last" id="lastname" name="lastname" placeholder="Last Name" value="" required>
+            </div>
+            <label for="email">Email:</label>
+            <div class="input-imeil">
+                <input type="email" class="email" id="em" name="email" placeholder="example@gmail.com" value="" required>
+            </div>
+            <label for="birtday">D.O.B:</label>
+            <div class="input-txt">
+                <input type="date"  id="birthday" name="birthday" required>
+            </div>
+            <label for="id">Id No.</label>
+            <div class="input-txt">
+                <input type="number"  id="idnumber" name="idnumber" required>
+            </div><br>
+            <label for="gender">Gender:</label>
+            <div class="data">
+                <input list="gender" name="gen" required>
+                <datalist id="gender">
+                    <option value="Male">
+                    <option value="Female">
+                    <option value="Other">
+                </datalist>
+            </div>
+            <label for="address">Address:</label>
+            <div class="input-txt">
+                <input type="text"  id="address" name="address" placeholder="Address" required>
+            </div>
+            <label for="address">Postal-Code:</label>
+            <div class="input-txt">
+                <input type="text"  id="postalcode" name="postalcode" placeholder="Postal-code" required>
+            </div>
+            <label for="mobile">Mobile:</label>
+            <div class="input-txt">
+                <input type="tel"  id="phone" name="phone" placeholder="07X-XXX-XXXX or 01X-XXX-XXXX" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            </div>
+            <label for="password">Password:</label>
+            <div class="input-txt">
+                <input type="password" class="password" id="pass" name="psw" placeholder="Password" value="" required>
+                <!--<i class="fas fa-eye"></i>-->
+            </div>
+             <label for="confirmpassword">Confirm Password:</label>
+            <div class="input-txt">
+                <input type="password" class="confirmpassword" id="cpass" name="confirmpassword" placeholder="Confirm Password" value="" required>
+            </div>
+         
+            <label for="county">County:</label>
+            <div class="data">
+                <input list="county" name="county" required>
+                <datalist id="county">
+                    <option value="Kisii">
+                    <option value="Nyamira">
+                    <option value="Migori">
+                    <option value="Kisumu">
+                    <option value="Nakuru">
+                    <option value="Nairobi">
+                    <option value="Mombasa">
+                </datalist>
+            </div>
+            <label for="Club">Club:</label>
+            <div class="input-optn">
+                <select name="club" id="clb" required>
+                    <option value="Select team" disabled selected>--Select--</option>
+                    <option value="">Kanunda FC</option>
+                    <option value="">Sportiff FC</option>
+                    <option value="">Krk FC</option>
+                    <option value="">White Hart FC</option>
+                    <option value="">Burungu FC</option>
+                    <option value="">Isamwera FC</option>
+                    <option value="">Keore Super Worriors FC</option>
+                    <option value="">kioge FC</option>
+                    <option value="">Shabana FC</option>
+                    <option value="">Iranda FC</option>
+                    <option value="">Nyamondo FC</option>
+                    <option value="">Industrial Area FC</option>
+                    <option value="">Mosocho Combined FC</option>
+                    <option value="">Matieko FC</option>
+                    <option value="">Nyasore FC</option>
+                    <option value="">Getembe FC</option>
+                </select>
+            </div>
+            <div class="sub">
+                <input type="checkbox"  id="terms" name="terms" required onchange="this.setCustomValidity(validity.valueMissing ? 'Please indicate that you accept the Terms and Conditions' : '');">
+                <input type="submit" name="Submit" id="submit" value="Register" onclick="submitForm()">
+            </div>
+            <hr>
+            <div class="txt">
+                <p>Already have an Account? <a href="playerlogin.html" target="_blank"> Sign In</a></p>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function submitForm() {
+                event.preventDefault;
+
+                const firstName = document.getElementById('firstname').value;
+                const middleName = document.getElementById('middlename').value;
+                const lastName = document.getElementById('lastname').value;
+                const email= document.getElementById('email').value;
+                const birtDate = document.getElementById('birthday').value;
+                const idNumber = document.getElementById('idnumber').value;
+                const gender = document.getElementById('gender').value;
+                const address = document.getElementById('address').value;
+                const postalCode = document.getElementById('postalcode').value;
+                const mobile = document.getElementById('phone').value;
+                const password = document.getElementById('pass').value;
+                const confirmPassword = document.getElementById('cpass').value;
+                const county = document.getElementById('county').value;
+                const club = document.getElementById('clb').value;
+                
+
+        
+                const user = {
+                    firstName: firstName,
+                    middleName: middleName,
+                    lastName: lastName,
+                    email: email,
+                    birtDate: birtDate,
+                    idNo: idNo,
+                    gender: gender,
+                    address: address,
+                    postalCode: postalCode,
+                    mobile: mobile,
+                    password: password,
+                    confirmPassword: confirmPassword,
+                    county: county,
+                    club: club,
+                }
+               
+
+                axios.post(`http://localhost:5000/register`, user)
+                    .then((response) => {
+                       console.log(response.data)
+                       
+                    
+                });
+
+
+            }
+        </script>
+</body>
+</html>

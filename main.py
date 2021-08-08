@@ -47,8 +47,3 @@ if status == 'eligible':
 
 else:
     sys.exit()
-
-
-
-
-

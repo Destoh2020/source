@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    height: 100%;
+    width: 100%;
+    background-image: url("../allimages/blue_lake.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box{
+    height: 350px;
+    width: 300px;
+    top: 20px;
+    border: 1px solid white;
+    border-radius: 20px;
+    background: white;
+    padding: 8px;
+    box-sizing: border-box; 
+}
+.box form{
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 15px;
+    
+}
+.box form hr{
+    top: 5px;
+    color: gray;
+}
+.box form label{
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+.box form .input-txt{
+    border: 0.5px solid black;
+    border-radius: 3px;
+    padding: 4px;
+    width: 200px;
+    margin: 20px;
+    text-align: start;
+}
+.box form input{
+    border: 0;
+    outline: none;
+    width: 100%;
+
+}
+.box form .txt p{
+    font-size: 15px;
+    padding: 8px;
+    
+}
+.box form .txt p a:link{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    font-style: italic;
+    color: green;
+}
+.box form .forgot{
+    position: absolute;
+    margin: 0 20px;
+   margin-top: 2px;
+}
+.box form .forgot span a{
+    text-decoration: underline;
+    color: purple;
+    font-size: 15px;
+}
+.box form hr{
+    bottom: 5px;
+    color: gray;
+}
+.box form .sub{
+    padding: 4px;
+    margin: 8px;
+    text-align: center;
+}
+.box form .sub input{
+    font-size: 18px;
+    font-weight: 600;
+    width: 100px;
+    background-color: green;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 8px;
+
+}

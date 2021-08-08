@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <title>itr test</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+                body {
+                        margin: 0;
+                        padding: 0;
+                        background:yellow;
+    
+}
+                #i-w {
+                        z-index: 9999;
+                        visibility: visible;
+                        -webkit-transform: translateY(0%);
+                        transform: translateY(0%);
+                        -webkit-transition: -webkit-transform .4s ease-in-out;
+                        transition: transform .4s ease-in-out;
+                        will-change: transform;
+                }
+
+                #i-w.loaded {
+                        visibility: hidden;
+                        -webkit-transform: translateY(-100%);
+                        transform: translateY(-100%);
+                        -webkit-transition: -webkit-transform 1.3s cubic-bezier(.96, 0, .07, 1), visibility 0s 1.9s;
+                        transition: transform 1.3s cubic-bezier(.96, 0, .07, 1), visibility 0s 1.9s;
+                }
+
+                #i-w .itr {
+                        z-index: 100000;
+                        position: fixed;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        background: #0f0a05;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                }
+
+                #i-w {
+                        position: fixed;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                }
+                
+                .container {
+                        background: pink;
+                        display: flex;
+                        flex-direction: column;
+                        min-height: 100vh;
+                        justify-content: center;
+                        align-items: center;
+                        transform: translateY(0);
+                        transition: transform .7s cubic-bezier(.96, 0, .07, 1);
+                        will-change: transform; 
+                }
+                .container.fd {
+                        transform: translateY(100%);  
+                        transition: transform .1s cubic-bezier(.96, 0, .07, 1);
+}
+                .hdg {
+
+                        font-family: Helvetica, sans-serif;
+                        text-transform: uppercase;
+                        text-align: center;
+                        color: #000;
+                        font-size: 18vw;
+                }
+                .itr-hdg {
+                        font-family: Helvetica, sans-serif;
+                        text-transform: uppercase;
+                        text-align: center;
+                        color: green;
+                        font-size: 8vw;   
+                        opacity: 1;
+                        visibility: hidden;
+                        will-change: transform;
+                        transform: translate3d(0, 150%, 0) skewY(18deg) scale(1);
+                        animation: fd-i 1.3s .6s cubic-bezier(.86,0,.07,1) forwards, trlt-i 1.5s 1s cubic-bezier(.23, 1, .32, 1) forwards, trlt-o .5s 2.9s cubic-bezier(.23, 1, .32, 1) forwards, fd-o .4s 3s ease forwards;
+
+                }
+
+                @keyframes trlt-i {
+                        to {
+                                -webkit-transform: translateZ(0);
+                                transform: translateZ(0);
+                        }
+                }
+
+                @keyframes trlt-o {
+                        from {
+                                -webkit-transform: translateZ(0);
+                                transform: translateZ(0);
+                        }
+
+                        to {
+                                -webkit-transform: translate3d(0, -150%, 0) skewY(0deg) scale(1);
+                                transform: translate3d(0, -150%, 0) skewY(0deg) scale(1);
+                        }
+                }
+
+                @keyframes fd-i {
+                        0% {
+                                opacity: 0;
+                                visibility: hidden;
+                        }
+
+                        to {
+                                opacity: 1;
+                                visibility: visible;
+                        }
+                }
+
+                @keyframes fd-o {
+                        0% {
+                                opacity: 1;
+                                visibility: visible;
+                        }
+
+                        to {
+                                opacity: 0;
+                                visibility: hidden;
+                        }
+                }
+        </style>
+        <script>
+                  setTimeout(function () {
+                        function run() {
+                                var wrp = document.getElementById("i-w");
+                                var swp = document.getElementById("pink");
+                                wrp.className += "loaded";
+                                swp.classList.add('fd');
+
+                        }
+                        if (document.readyState != 'loading') run();
+                        else if (document.addEventListener) document.addEventListener(
+                                'DOMContentLoaded', run);
+                        else document.attachEvent('onreadystatechange', function () {
+                                if (document.readyState == 'complete') run();
+                        });
+                }, 2650);
+                setTimeout(function () {
+                        var swp = document.getElementById("pink");
+                        swp.classList.remove('fd');  
+                }, 3000);
+        </script>
+</head>
+
+<body>
+        <div id="i-w">
+                <div class="itr">
+                                <div class="itr-hdg">
+                                        <h1>&#11014; intro &#11014;</h1>
+                                </div>
+                </div>
+        </div>
+      
+        <div class="container" id="pink">
+                <h1 class="hdg">hello</h1>
+        </div>
+       
+</body>
+
+</html>

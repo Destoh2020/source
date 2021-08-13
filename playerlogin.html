@@ -25,7 +25,8 @@
                 <span><a href="#">Forgot Password?</a></span>
             </div><br>
             <div class="sub">
-                <input type="submit" name="Submit" id="submit" value="Log In" onclick="submitForm()">
+                <!--<input type="submit" name="Submit" id="submit" value="Log In" onclick="submitForm()">-->
+                <button type="button" onclick="submitForm()">Login</button>
             </div>
             
             <hr>
@@ -39,33 +40,26 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script>
-            function submitForm() {
-                event.preventDefault();
+    <script>
+        function submitForm() {
+            event.preventDefault();
 
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('pass').value;
+            if (document.getElementById('email').value == ""){
+                 document.getElementById('email').style.borderColor = "red";
+            }
+
+            if (document.getElementById('pass').value == ""){
+                document.getElementById('pass').style.borderColor = "red";
+            }
 
                
-                if (!email || email == "") {
-                    alert('Please enter your email address');
-                }
-            
-                if (!password || password == "") {
-                    alert('Please enter your password');
-                }
-               
 
-                axios.get(`http://localhost:5000/login?username=${user}&password=${password}`)
+            axios.get(`http://localhost:5000/login?username=${email}&password=${password}`)
                 .then((response) => {
-                    console.log(response.data)
-                });
+                console.log(response.data)
+            });
                 
             
-                
-    
-
-                
 
             }
         

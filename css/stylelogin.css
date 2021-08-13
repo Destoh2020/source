@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url("../allimages/BACK_H~1.JPG") no-repeat;
+    background-size: cover;
+}
+.container{
+    width: 300px;
+    padding: 30px;
+    position: absolute;
+    border-radius: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border: 1px solid white;
+    background-color: transparent;
+    text-align: center;
+}
+.container form h2{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.container form input[type="email"],input[type="password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid green;
+    padding: 14px 10px;
+    width: 220px;
+    outline: none;
+    border-radius: 20px;
+    color: white;
+    
+}
+.container form input[type="email"]:focus,input[type="password"]:focus{
+    width: 270px;
+    border-color: yellow;
+}
+.container form input[type="submit"]{
+    border: 0;
+    width: 100px;
+    background: none;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    border: 3px solid yellow;
+    padding: 8px 3px;
+    outline: none;
+    color: white;
+    border-radius: 12px;
+    
+    cursor: pointer;
+    font-size: 20px;
+
+}
+.container form input[type="submit"]:hover{
+    background: yellow;
+}

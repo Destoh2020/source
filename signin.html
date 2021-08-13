@@ -34,16 +34,18 @@
         function submitForm() {
             event.preventDefault();
 
-            var user = document.getElementById('a').value;
+            //var user = document.getElementById('a').value;
             //var email = document.getElementById('b').value;
-            var password = document.getElementById('c').value;
+            //var password = document.getElementById('c').value;
 
-            if (!user || user == "") {
-                alert('Please enter your Username');
+            if (document.getElementById('a').value == ""){
+                document.getElementById('a').style.borderColor = "red";
+                //alert('Please enter your username')
+
             }
             
             if (!password || password == "") {
-                alert('Please enter your password');
+                //alert('Please enter your password');
             }
 
             axios.get(`http://localhost:5000/login?username=${user}&password=${password}`)

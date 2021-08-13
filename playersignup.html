@@ -125,6 +125,11 @@
             function submitForm() {
                 event.preventDefault;
 
+
+                if (document.getElementById('firstname').value == ""){
+                    document.getElementById('firstname').style.borderColor = "red";
+                }
+
                 const firstName = document.getElementById('firstname').value;
                 const middleName = document.getElementById('middlename').value;
                 const lastName = document.getElementById('lastname').value;
@@ -148,7 +153,7 @@
                     lastName: lastName,
                     email: email,
                     birtDate: birtDate,
-                    idNo: idNo,
+                    idNumber: idNumberfir,
                     gender: gender,
                     address: address,
                     postalCode: postalCode,
@@ -166,6 +171,8 @@
                        
                     
                 });
+
+               
 
 
             }

@@ -16,7 +16,7 @@
                 <p>No account? <a href="signup.html">Sign Up</a></p>
             </div>
             <div class="box">
-                <form class="form-box" method="POST">
+                <form class="form-box" method="GET">
                     <i class="fas fa-user"><input type="text" id="a" class="username" placeholder="Username"
                             required></i>
     
@@ -26,28 +26,32 @@
                 </form>
             </div>
         </main>
-        
+    
+
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         function submitForm() {
             event.preventDefault();
 
-            var user = document.getElementById('a').value;
+            //var user = document.getElementById('a').value;
             //var email = document.getElementById('b').value;
-            var password = document.getElementById('c').value;
+            //var password = document.getElementById('c').value;
 
-            if (!user || user == "") {
-                alert('Please enter your Username');
+            if (document.getElementById('a').value == ""){
+                document.getElementById('a').style.borderColor = "red";
+                //alert('Please enter your username')
+
             }
             
             if (!password || password == "") {
-                alert('Please enter your password');
+                //alert('Please enter your password');
             }
 
             axios.get(`http://localhost:5000/login?username=${user}&password=${password}`)
                 .then((response) => {
                     console.log(response.data)
-                })
+                });
         }
     </script>
 </body>

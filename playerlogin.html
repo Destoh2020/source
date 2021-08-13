@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Log In Form</title>
+    <link rel="stylesheet" href="css/playerlogin.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+        <form>
+            <h2>Log In</h2>
+            <hr>
+            <div class="input-txt">
+                <input type="email" class="email" id="email" name="email" placeholder="example@gmail.com" value="" required>
+            </div>
+            
+            <div class="input-txt">
+                <input type="password" class="password" id="pass" name="psw" placeholder="Password" value="" required>
+            </div>
+            <div class="forgot">
+                <span><a href="#">Forgot Password?</a></span>
+            </div><br>
+            <div class="sub">
+                <!--<input type="submit" name="Submit" id="submit" value="Log In" onclick="submitForm()">-->
+                <button type="button" onclick="submitForm()">Login</button>
+            </div>
+            
+            <hr>
+            <div class="txt">
+                <p>Don't have an account? <a href="playersignup.html" target="_self"> Create Account</a></p>
+            </div>
+        </form>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function submitForm() {
+            event.preventDefault();
+
+            if (document.getElementById('email').value == ""){
+                 document.getElementById('email').style.borderColor = "red";
+            }
+
+            if (document.getElementById('pass').value == ""){
+                document.getElementById('pass').style.borderColor = "red";
+            }
+
+               
+
+            axios.get(`http://localhost:5000/login?username=${email}&password=${password}`)
+                .then((response) => {
+                console.log(response.data)
+            });
+                
+            
+
+            }
+        
+        
+        </script>
+</body>
+</html>

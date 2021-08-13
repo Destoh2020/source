@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Students</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.css">
+</head>
+<body>
+    <div class="container">
+        <form action="index.html" method="POST">
+            <h2>Register</h2>
+            <p>Please fill the form below to register your details.</p>
+            <hr>
+            <label for="school">School:</label>
+            <input type="text" name="school" id="school">
+            <label for="names">Full names:</label>
+            <input type="text" name="names" id="names">
+            <label for="dateofbirth">Date of Birth:</label>
+            <input type="date" name="birthdate" id="birthdate" >
+            <label for="nemis">Nemis no.:</label>
+            <input type="text" name="nemis" id="nemis">
+            <label for="level">Class/form:</label>
+            <input list="level" name="level" id="level">
+                <datalist>
+                    <option value="Babyc"> <option value="Grade-one"> <option value="Grade-two">
+                    <option value="Grade-three"> <option value="Grade-four"> <option value="Grade-five">  
+                    <option value="Grade-six">  <option value="Form-one">  <option value="Form-two">
+                    <option value="Form-three">  <option value="Form-four"> <option value="Form-five"> <option value="Form-six">
+                </datalist>
+            <label for="nationality">Nationality:</label>
+            <input type="text" name="nationality" id="nationality">
+            <label for="gender">Gender:</label>
+            <input list="gender" name="gender" id="gender">
+                <datalist>
+                    <option value="Male">
+                    <option value="Female"> 
+                </datalist>
+            <div class="send"><input type="submit" value="Submit" id="submit" onclick="submitForm()"></div>
+            <div class="txt"><p>Already have an account? <a href="#">Log In</a></p></div>
+
+        </form>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function submitForm() {
+            event.preventDefault();
+
+            if (document.getElementById('school').value == ""){
+                document.getElementById('school').style.borderColor = "red"
+            }
+            if (document.getElementById('names').value == ""){
+                document.getElementById('names').style.borderColor = "red"
+            }
+            if (document.getElementById('birthdate').value == ""){
+                document.getElementById('birthdate').style.borderColor = "red"
+            }
+            if (document.getElementById('nemis').value == ""){
+                document.getElementById('nemis').style.borderColor = "red"
+            }
+            if (document.getElementById('level').value == ""){
+                document.getElementById('level').style.borderColor = "red"
+            }
+            if (document.getElementById('nationality').value == ""){
+                document.getElementById('nationality').style.borderColor = "red"
+            }
+            if (document.getElementById('gender').value == ""){
+                document.getElementById('gender').style.borderColor = "red"
+            }
+
+            
+            const school = document.getElementById('school').value;
+            const fullName = document.getElementById('names').value;
+            const birthDate = document.getElementById('birthdate').value;
+            const nemis = document.getElementById('nemis').value;
+            const level = document.getElementById('level').value;
+            const nationality = document.getElementById('nationality').value;
+            const gender = document.getElementById('gender').value;
+
+            const student = {
+                school: school,
+                fullName: fullName,
+                birthDate: birthDate,
+                nemis: nemis,
+                level: level,
+                nationality: nationality,
+                gender: gender
+            }
+
+            axios.post(`http://localhost:5000/new`, student)
+                    .then((response) => {
+                       console.log(response.data)
+                       
+                    
+            });
+        
+
+        }
+    </script>
+</body>
+</html>
